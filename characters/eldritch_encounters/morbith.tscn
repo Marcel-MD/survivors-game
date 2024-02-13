@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://t402u65ckpd6"]
+
+[ext_resource type="Texture2D" uid="uid://b7rhtttevhxtj" path="res://characters/ground_shadow.png" id="1_af310"]
+[ext_resource type="Script" path="res://characters/eldritch_encounters/morbith.gd" id="1_h03nv"]
+[ext_resource type="Texture2D" uid="uid://fes5fw0jmcmw" path="res://characters/eldritch_encounters/Morbith512.png" id="2_aqny1"]
+[ext_resource type="Texture2D" uid="uid://br01i1opp8ote" path="res://characters/eldritch_encounters/Morbith512Border.png" id="3_o4l56"]
+
+[sub_resource type="Animation" id="Animation_c5spn"]
+resource_name = "hurt"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anchor/Morbith512Border:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rqak7"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anchor:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.9), Vector2(1, 0.999997)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vrfqu"]
+_data = {
+"hurt": SubResource("Animation_c5spn"),
+"walk": SubResource("Animation_rqak7")
+}
+
+[node name="Morbith" type="Node2D"]
+script = ExtResource("1_h03nv")
+
+[node name="GroundShadow" type="Sprite2D" parent="."]
+modulate = Color(0.145098, 0.145098, 0.145098, 1)
+texture = ExtResource("1_af310")
+
+[node name="Anchor" type="Marker2D" parent="."]
+
+[node name="Morbith512" type="Sprite2D" parent="Anchor"]
+position = Vector2(7.99999, -88)
+scale = Vector2(0.4375, 0.4375)
+texture = ExtResource("2_aqny1")
+
+[node name="Morbith512Border" type="Sprite2D" parent="Anchor"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(0.999996, -87)
+scale = Vector2(0.441406, 0.441406)
+texture = ExtResource("3_o4l56")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_vrfqu")
+}

@@ -62,7 +62,7 @@ offset_right = 1216.0
 offset_bottom = 128.0
 theme_override_font_sizes/font_size = 30
 text = "More Speed
--30 Score"
+-20 Score"
 
 [node name="GunButton" type="Button" parent="CanvasLayer"]
 offset_left = 1344.0
@@ -71,7 +71,7 @@ offset_right = 1536.0
 offset_bottom = 128.0
 theme_override_font_sizes/font_size = 30
 text = "More Guns
--50 Score"
+-40 Score"
 
 [node name="Player" parent="." instance=ExtResource("1_nc74y")]
 position = Vector2(960, 544)

@@ -3,10 +3,12 @@ extends CharacterBody2D
 @onready var score_label = get_node("/root/Game/CanvasLayer/ScoreLabel")
 const GUN = preload("res://gun.tscn")
 signal health_depleted
-var damage_rate = 30.0
+
+var armor = 1.0
 var health = 100.0
 var speed = 600
 var score = 0
+var guns = 0
 
 func increment_score(amount):
 	score += amount
@@ -14,6 +16,8 @@ func increment_score(amount):
 
 func add_new_gun():
 	var gun = GUN.instantiate()
+	gun.position.y = guns * 20
+	guns += 1
 	add_child(gun)
 
 func heal():
@@ -23,9 +27,9 @@ func heal():
 func increase_speed():
 	speed += 150
 	
-func decrease_damage_rate():
-	if damage_rate > 5.0:
-		damage_rate -= 5.0
+func increase_armor():
+	if armor > 0.3:
+		armor -= 0.2
 	
 
 func _physics_process(delta):
@@ -40,7 +44,10 @@ func _physics_process(delta):
 	
 	var overlapping_enemies = %HurtBox.get_overlapping_bodies()
 	if overlapping_enemies.size() > 0:
-		health -= damage_rate * overlapping_enemies.size() * delta
+		var damage = 0
+		for enemy in overlapping_enemies:
+			damage += enemy.damage	
+		health -= damage * armor * delta
 		%HealthBar.value = health
 		if health <= 0.0:
 			health_depleted.emit()

@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=3 uid="uid://sngspqyldr1i"]
+
+[ext_resource type="Texture2D" uid="uid://b7rhtttevhxtj" path="res://characters/ground_shadow.png" id="1_bauyn"]
+[ext_resource type="Script" path="res://characters/eldritch_encounters/astrogor.gd" id="1_ebcrj"]
+[ext_resource type="Texture2D" uid="uid://c48ohvrgt537n" path="res://characters/eldritch_encounters/Astrogor512.png" id="2_qg2jf"]
+[ext_resource type="Texture2D" uid="uid://e6k22uyo7la" path="res://characters/eldritch_encounters/Astrogor512Border.png" id="3_eyuup"]
+
+[sub_resource type="Animation" id="Animation_4ea7w"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anchor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0on8s"]
+resource_name = "hurt"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anchor/Astrogor512Border:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1qfyp"]
+resource_name = "walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anchor:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -32.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a3nbp"]
+_data = {
+"RESET": SubResource("Animation_4ea7w"),
+"hurt": SubResource("Animation_0on8s"),
+"walk": SubResource("Animation_1qfyp")
+}
+
+[node name="Astrogor" type="Node2D"]
+script = ExtResource("1_ebcrj")
+
+[node name="GroundShadow" type="Sprite2D" parent="."]
+modulate = Color(0.145098, 0.145098, 0.145098, 1)
+texture = ExtResource("1_bauyn")
+
+[node name="Anchor" type="Marker2D" parent="."]
+
+[node name="Astrogor512" type="Sprite2D" parent="Anchor"]
+position = Vector2(0, -96)
+scale = Vector2(0.4375, 0.4375)
+texture = ExtResource("2_qg2jf")
+
+[node name="Astrogor512Border" type="Sprite2D" parent="Anchor"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1.3411e-07, -96)
+scale = Vector2(0.4375, 0.4375)
+texture = ExtResource("3_eyuup")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_a3nbp")
+}

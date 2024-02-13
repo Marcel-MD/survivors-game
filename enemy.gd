@@ -1,21 +1,42 @@
 extends CharacterBody2D
 
-var health = 3
 const SMOKE = preload("res://smoke_explosion/smoke_explosion.tscn")
+const MORBITH = preload("res://characters/eldritch_encounters/morbith.tscn")
+const ASTROGOR = preload("res://characters/eldritch_encounters/astrogor.tscn")
+const VESPERMORPH = preload("res://characters/eldritch_encounters/vespermorph.tscn")
 @onready var player = get_node("/root/Game/Player")
 
+var enemy
+var speed = 300
+var health = 3
+var damage = 30
+
 func _ready():
-	%Slime.play_walk()
+	var seed = randf()
+	if seed < 0.2:
+		enemy = VESPERMORPH.instantiate()
+		speed = 200
+		health = 6
+		damage = 50
+	elif seed < 0.5:
+		enemy = ASTROGOR.instantiate()
+		speed = 500
+		health = 4
+	else:
+		enemy = MORBITH.instantiate()
+		
+	add_child(enemy)
+	enemy.play_walk()
 
 
 func _physics_process(delta):
 	var direction = global_position.direction_to(player.global_position)
-	velocity = direction * 300
+	velocity = direction * speed
 	move_and_slide()
 
 
 func take_damage():
-	$Slime.play_hurt()
+	enemy.play_hurt()
 	health -= 1
 	
 	if health == 0:

@@ -43,20 +43,20 @@ func _on_armor_button_pressed():
 		return
 		
 	player.increment_score(-20)
-	player.decrease_damage_rate()
+	player.increase_armor()
 
 
 func _on_speed_button_pressed():
-	if player.score < 30:
+	if player.score < 20:
 		return
 		
-	player.increment_score(-30)
+	player.increment_score(-20)
 	player.increase_speed()
 
 
 func _on_gun_button_pressed():
-	if player.score < 50:
+	if player.score < 40:
 		return
 		
-	player.increment_score(-50)
+	player.increment_score(-40)
 	player.add_new_gun()

@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvvjnwq3nixi"]
+[gd_scene load_steps=3 format=3 uid="uid://cvvjnwq3nixi"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_rgein"]
-[ext_resource type="PackedScene" uid="uid://ogik4s70pgwl" path="res://characters/slime/slime.tscn" id="2_fs4sb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aqa6m"]
 radius = 50.0
@@ -10,9 +9,6 @@ radius = 50.0
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_rgein")
-
-[node name="Slime" parent="." instance=ExtResource("2_fs4sb")]
-unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -32)
