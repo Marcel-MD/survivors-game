@@ -48,7 +48,7 @@ _data = {
 script = ExtResource("1_h03nv")
 
 [node name="GroundShadow" type="Sprite2D" parent="."]
-modulate = Color(0.145098, 0.145098, 0.145098, 1)
+modulate = Color(0, 0, 0, 0.392157)
 texture = ExtResource("1_af310")
 
 [node name="Anchor" type="Marker2D" parent="."]
