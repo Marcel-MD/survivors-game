@@ -8,7 +8,7 @@ var armor = 1.0
 var health = 100.0
 var speed = 600
 var score = 0
-var guns = 0
+var gun_position = -30
 
 func increment_score(amount):
 	score += amount
@@ -16,8 +16,8 @@ func increment_score(amount):
 
 func add_new_gun():
 	var gun = GUN.instantiate()
-	gun.position.y = guns * 20
-	guns += 1
+	gun.position.y = gun_position
+	gun_position += 30
 	add_child(gun)
 
 func heal():
@@ -38,9 +38,9 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	if velocity.length() > 0.0:
-		%HappyBoo.play_walk_animation()
+		%Wizard.play_walk_animation()
 	else:
-		%HappyBoo.play_idle_animation()
+		%Wizard.play_idle_animation()
 	
 	var overlapping_enemies = %HurtBox.get_overlapping_bodies()
 	if overlapping_enemies.size() > 0:

@@ -18,8 +18,8 @@ shape = SubResource("CircleShape2D_odi7v")
 [node name="PivotPoint" type="Marker2D" parent="."]
 
 [node name="Deagle" type="Sprite2D" parent="PivotPoint"]
-position = Vector2(72, 0)
-scale = Vector2(0.3905, 0.424202)
+position = Vector2(72, 4.76837e-07)
+scale = Vector2(0.32325, 0.340426)
 texture = ExtResource("2_i3she")
 flip_h = true
 

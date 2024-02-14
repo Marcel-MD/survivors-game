@@ -10,6 +10,7 @@ var enemy
 var speed = 300
 var health = 3
 var damage = 30
+var score = 1
 
 func _ready():
 	var seed = randf()
@@ -18,10 +19,12 @@ func _ready():
 		speed = 200
 		health = 6
 		damage = 50
+		score = 3
 	elif seed < 0.5:
 		enemy = ASTROGOR.instantiate()
 		speed = 500
 		health = 4
+		score = 2
 	else:
 		enemy = MORBITH.instantiate()
 		
@@ -40,7 +43,7 @@ func take_damage():
 	health -= 1
 	
 	if health == 0:
-		player.increment_score(1)
+		player.increment_score(score)
 		queue_free()
 		var smoke = SMOKE.instantiate()
 		get_parent().add_child(smoke)
