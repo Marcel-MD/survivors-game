@@ -60,3 +60,7 @@ func _on_gun_button_pressed():
 		
 	player.increment_score(-40)
 	player.add_new_gun()
+
+
+func _on_music_player_finished():
+	$MusicPlayer.play()

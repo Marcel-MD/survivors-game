@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://2nm0qbmhuv6p"]
+[gd_scene load_steps=14 format=3 uid="uid://2nm0qbmhuv6p"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_a6ptg"]
 [ext_resource type="PackedScene" uid="uid://ceulebsmyg4rq" path="res://player.tscn" id="1_nc74y"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://yvc25cs763si" path="res://ground/orange_ground_512.png" id="3_4dlig"]
 [ext_resource type="Texture2D" uid="uid://dumcwfoksv80m" path="res://ground/green_ground_512.png" id="4_bqhbi"]
 [ext_resource type="Texture2D" uid="uid://r4u7nw07qpap" path="res://ground/blue_ground_512.png" id="5_mcuj0"]
+[ext_resource type="AudioStream" uid="uid://eexvkvqw2ewi" path="res://music/No Aliens Here.mp3" id="7_sj7fc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_da165"]
 texture = ExtResource("2_2qg0h")
@@ -117,6 +118,12 @@ curve = SubResource("Curve2D_dkvos")
 unique_name_in_owner = true
 position = Vector2(-128, -120)
 
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="Player"]
+unique_name_in_owner = true
+position = Vector2(-960, -544)
+stream = ExtResource("7_sj7fc")
+autoplay = true
+
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 autostart = true
@@ -155,4 +162,5 @@ text = "Game Over"
 [connection signal="pressed" from="CanvasLayer/SpeedButton" to="." method="_on_speed_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/GunButton" to="." method="_on_gun_button_pressed"]
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
+[connection signal="finished" from="Player/MusicPlayer" to="." method="_on_music_player_finished"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_timer_timeout"]
