@@ -37,6 +37,12 @@ func _physics_process(delta):
 	velocity = direction * speed
 	move_and_slide()
 	
+	if direction.x < 0 && %Wizard.scale.x > 0:
+		%Wizard.scale.x = -1
+	
+	if direction.x > 0 && %Wizard.scale.x < 0:
+		%Wizard.scale.x = 1
+	
 	if velocity.length() > 0.0:
 		%Wizard.play_walk_animation()
 	else:
