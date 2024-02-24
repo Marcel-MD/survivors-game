@@ -73,6 +73,7 @@ theme_override_font_sizes/font_size = 50
 text = "Score: 0"
 
 [node name="HealButton" type="Button" parent="CanvasLayer"]
+unique_name_in_owner = true
 offset_left = 384.0
 offset_top = 32.0
 offset_right = 576.0
@@ -82,6 +83,7 @@ text = "Heal
 -10 Score"
 
 [node name="ArmorButton" type="Button" parent="CanvasLayer"]
+unique_name_in_owner = true
 offset_left = 704.0
 offset_top = 32.0
 offset_right = 896.0
@@ -91,22 +93,24 @@ text = "More Armor
 -20 Score"
 
 [node name="SpeedButton" type="Button" parent="CanvasLayer"]
+unique_name_in_owner = true
 offset_left = 1024.0
 offset_top = 32.0
 offset_right = 1216.0
 offset_bottom = 128.0
 theme_override_font_sizes/font_size = 30
 text = "More Speed
--20 Score"
+-30 Score"
 
 [node name="GunButton" type="Button" parent="CanvasLayer"]
+unique_name_in_owner = true
 offset_left = 1344.0
 offset_top = 32.0
 offset_right = 1536.0
 offset_bottom = 128.0
 theme_override_font_sizes/font_size = 30
 text = "More Guns
--40 Score"
+-50 Score"
 
 [node name="Player" parent="." instance=ExtResource("1_nc74y")]
 position = Vector2(960, 544)

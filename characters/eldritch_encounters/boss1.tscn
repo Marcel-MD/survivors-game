@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://bcxy534pymx88"]
+
+[ext_resource type="Script" path="res://characters/eldritch_encounters/boss1.gd" id="1_7n8ax"]
+[ext_resource type="Texture2D" uid="uid://bannl1trgalwp" path="res://characters/eldritch_encounters/boss1.png" id="1_27u05"]
+[ext_resource type="Texture2D" uid="uid://b7rhtttevhxtj" path="res://characters/ground_shadow.png" id="1_k4ede"]
+[ext_resource type="AudioStream" uid="uid://c6k32shvlcggg" path="res://music/Hellscream.mp3" id="4_rne85"]
+
+[sub_resource type="Animation" id="Animation_2tx61"]
+resource_name = "hurt"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Marker2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.560784, 0.560784, 0.560784, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3tb1m"]
+resource_name = "walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Marker2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ra5w2"]
+_data = {
+"hurt": SubResource("Animation_2tx61"),
+"walk": SubResource("Animation_3tb1m")
+}
+
+[node name="Boss1" type="Node2D"]
+script = ExtResource("1_7n8ax")
+
+[node name="GroundShadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.392157)
+position = Vector2(7.99999, 0)
+scale = Vector2(3.04762, 1.23077)
+texture = ExtResource("1_k4ede")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="Boss1" type="Sprite2D" parent="Marker2D"]
+position = Vector2(9.53674e-07, -168)
+scale = Vector2(0.402372, 0.402372)
+texture = ExtResource("1_27u05")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_ra5w2")
+}
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_rne85")
+autoplay = true
+
+[connection signal="finished" from="MusicPlayer" to="." method="_on_music_player_finished"]

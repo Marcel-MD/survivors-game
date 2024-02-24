@@ -10,9 +10,11 @@ var speed = 600
 var score = 0
 var gun_position = -30
 
+
 func increment_score(amount):
 	score += amount
 	update_score_label()
+
 
 func add_new_gun():
 	var gun = GUN.instantiate()
@@ -20,16 +22,10 @@ func add_new_gun():
 	gun_position += 30
 	add_child(gun)
 
+
 func heal():
 	health = 100
 	%HealthBar.value = health
-	
-func increase_speed():
-	speed += 150
-	
-func increase_armor():
-	if armor > 0.3:
-		armor -= 0.2
 	
 
 func _physics_process(delta):
