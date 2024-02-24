@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://2nm0qbmhuv6p"]
+[gd_scene load_steps=15 format=3 uid="uid://2nm0qbmhuv6p"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_a6ptg"]
 [ext_resource type="PackedScene" uid="uid://ceulebsmyg4rq" path="res://player.tscn" id="1_nc74y"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dumcwfoksv80m" path="res://ground/green_ground_512.png" id="4_bqhbi"]
 [ext_resource type="Texture2D" uid="uid://r4u7nw07qpap" path="res://ground/blue_ground_512.png" id="5_mcuj0"]
 [ext_resource type="AudioStream" uid="uid://eexvkvqw2ewi" path="res://music/No Aliens Here.mp3" id="7_sj7fc"]
+[ext_resource type="Script" path="res://GameOverScreen.gd" id="8_q2ilw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_da165"]
 texture = ExtResource("2_2qg0h")
@@ -130,7 +131,9 @@ autostart = true
 
 [node name="GameOverScreen" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
+process_mode = 2
 visible = false
+script = ExtResource("8_q2ilw")
 
 [node name="ColorRect" type="ColorRect" parent="GameOverScreen"]
 anchors_preset = 15
@@ -157,6 +160,14 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 100
 text = "Game Over"
 
+[node name="Button" type="Button" parent="GameOverScreen"]
+offset_left = 809.0
+offset_top = 636.0
+offset_right = 1127.0
+offset_bottom = 761.0
+theme_override_font_sizes/font_size = 30
+text = "Main Menu"
+
 [connection signal="pressed" from="CanvasLayer/HealButton" to="." method="_on_heal_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/ArmorButton" to="." method="_on_armor_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/SpeedButton" to="." method="_on_speed_button_pressed"]
@@ -164,3 +175,4 @@ text = "Game Over"
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="finished" from="Player/MusicPlayer" to="." method="_on_music_player_finished"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="GameOverScreen/Button" to="GameOverScreen" method="_on_button_pressed"]
