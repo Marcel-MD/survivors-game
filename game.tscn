@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://2nm0qbmhuv6p"]
+[gd_scene load_steps=16 format=3 uid="uid://2nm0qbmhuv6p"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_a6ptg"]
 [ext_resource type="PackedScene" uid="uid://ceulebsmyg4rq" path="res://player.tscn" id="1_nc74y"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://yvc25cs763si" path="res://ground/orange_ground_512.png" id="3_4dlig"]
 [ext_resource type="Texture2D" uid="uid://dumcwfoksv80m" path="res://ground/green_ground_512.png" id="4_bqhbi"]
 [ext_resource type="Texture2D" uid="uid://r4u7nw07qpap" path="res://ground/blue_ground_512.png" id="5_mcuj0"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://joystick/virtual_joystick.tscn" id="6_5jjca"]
 [ext_resource type="AudioStream" uid="uid://eexvkvqw2ewi" path="res://music/No Aliens Here.mp3" id="7_sj7fc"]
 [ext_resource type="Script" path="res://GameOverScreen.gd" id="8_q2ilw"]
 
@@ -111,6 +112,21 @@ offset_bottom = 128.0
 theme_override_font_sizes/font_size = 30
 text = "More Guns
 -50 Score"
+
+[node name="Virtual Joystick" parent="CanvasLayer" instance=ExtResource("6_5jjca")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -426.0
+offset_top = -414.0
+offset_right = -126.0
+offset_bottom = -114.0
+grow_horizontal = 0
+visibility_mode = 1
+action_left = "move_left"
+action_right = "move_right"
+action_up = "move_up"
+action_down = "move_down"
 
 [node name="Player" parent="." instance=ExtResource("1_nc74y")]
 position = Vector2(960, 544)
