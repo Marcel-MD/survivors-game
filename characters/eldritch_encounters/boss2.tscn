@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bcxy534pymx88"]
+[gd_scene load_steps=8 format=3 uid="uid://bfm142rfq6i73"]
 
-[ext_resource type="Script" path="res://characters/eldritch_encounters/boss1.gd" id="1_7n8ax"]
-[ext_resource type="Texture2D" uid="uid://bannl1trgalwp" path="res://characters/eldritch_encounters/boss1.png" id="1_27u05"]
-[ext_resource type="Texture2D" uid="uid://b7rhtttevhxtj" path="res://characters/ground_shadow.png" id="1_k4ede"]
-[ext_resource type="AudioStream" uid="uid://c6k32shvlcggg" path="res://music/Hellscream.mp3" id="4_rne85"]
+[ext_resource type="Script" path="res://characters/eldritch_encounters/boss1.gd" id="1_06oou"]
+[ext_resource type="Texture2D" uid="uid://b7rhtttevhxtj" path="res://characters/ground_shadow.png" id="2_2hbpx"]
+[ext_resource type="Texture2D" uid="uid://cthpuh7uisylh" path="res://characters/eldritch_encounters/boss2.png" id="3_jqcps"]
+[ext_resource type="AudioStream" uid="uid://c6k32shvlcggg" path="res://music/Hellscream.mp3" id="4_2r2ao"]
 
 [sub_resource type="Animation" id="Animation_2tx61"]
 resource_name = "hurt"
@@ -44,20 +44,20 @@ _data = {
 }
 
 [node name="Boss1" type="Node2D"]
-script = ExtResource("1_7n8ax")
+script = ExtResource("1_06oou")
 
 [node name="GroundShadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.392157)
 position = Vector2(7.99999, 0)
 scale = Vector2(3.04762, 1.23077)
-texture = ExtResource("1_k4ede")
+texture = ExtResource("2_2hbpx")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 
-[node name="Boss1" type="Sprite2D" parent="Marker2D"]
-position = Vector2(9.53674e-07, -168)
-scale = Vector2(0.402372, 0.402372)
-texture = ExtResource("1_27u05")
+[node name="Boss2" type="Sprite2D" parent="Marker2D"]
+position = Vector2(8, -160)
+scale = Vector2(0.531046, 0.531046)
+texture = ExtResource("3_jqcps")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -67,7 +67,7 @@ libraries = {
 
 [node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("4_rne85")
+stream = ExtResource("4_2r2ao")
 autoplay = true
 
 [connection signal="finished" from="MusicPlayer" to="." method="_on_music_player_finished"]

@@ -11,4 +11,4 @@ func play_hurt():
 
 
 func _on_music_player_finished():
-	$MusicPlayer.play()
+	%MusicPlayer.play()

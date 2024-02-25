@@ -44,15 +44,16 @@ func _on_timer_timeout():
 		$EnemySpawnTimer.wait_time = 0.5
 		spawn_boss(1)
 	if enemies_spawned == 150:
-		$EnemySpawnTimer.wait_time = 0.3
+		$EnemySpawnTimer.wait_time = 0.4
 		spawn_boss(2)
 	if enemies_spawned == 300:
-		$EnemySpawnTimer.wait_time = 0.1
+		$EnemySpawnTimer.wait_time = 0.3
 		spawn_boss(3)
 	if enemies_spawned == 500:
 		spawn_boss(1)
 		spawn_boss(2)
 		spawn_boss(3)
+		%HealButton.queue_free() 
 
 
 func _on_player_health_depleted():

@@ -5,6 +5,8 @@ const MORBITH = preload("res://characters/eldritch_encounters/morbith.tscn")
 const ASTROGOR = preload("res://characters/eldritch_encounters/astrogor.tscn")
 const VESPERMORPH = preload("res://characters/eldritch_encounters/vespermorph.tscn")
 const BOSS1 = preload("res://characters/eldritch_encounters/boss1.tscn")
+const BOSS2 = preload("res://characters/eldritch_encounters/boss2.tscn")
+const BOSS3 = preload("res://characters/eldritch_encounters/boss3.tscn")
 @onready var player = get_node("/root/Game/Player")
 
 var enemy
@@ -43,13 +45,13 @@ func create_boss(name, player_speed):
 			damage = 100
 			score = 10
 		"BOSS2":
-			enemy = BOSS1.instantiate()
+			enemy = BOSS2.instantiate()
 			speed = player_speed - 50
 			health = 200
 			damage = 200
 			score = 20
 		"BOSS3":
-			enemy = BOSS1.instantiate()
+			enemy = BOSS3.instantiate()
 			speed = player_speed
 			health = 400
 			damage = 400
