@@ -41,13 +41,13 @@ func _on_timer_timeout():
 	enemies_spawned += 1
 	
 	if enemies_spawned == 50:
-		$EnemySpawnTimer.wait_time = 0.5
+		$EnemySpawnTimer.wait_time = 0.6
 		spawn_boss(1)
 	if enemies_spawned == 150:
 		$EnemySpawnTimer.wait_time = 0.4
 		spawn_boss(2)
 	if enemies_spawned == 300:
-		$EnemySpawnTimer.wait_time = 0.3
+		$EnemySpawnTimer.wait_time = 0.2
 		spawn_boss(3)
 	if enemies_spawned == 500:
 		spawn_boss(1)
